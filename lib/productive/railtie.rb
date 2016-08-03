@@ -1,9 +1,9 @@
 require 'rails'
 
-module ProductiveApiClient
+module Productive
   class Railtie < Rails::Railtie
     config.after_initialize do
-      ProductiveApiClient::Base.setup
+      Productive::Base.setup
     end
   end
 end

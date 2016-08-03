@@ -1,6 +1,6 @@
 require 'json_api_paginator'
 
-module ProductiveApiClient
+module Productive
   class Configuration
     attr_accessor :api_key
     attr_accessor :account_id
