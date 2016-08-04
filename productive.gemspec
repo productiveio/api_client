@@ -13,5 +13,6 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
   s.files = `git ls-files`.split("\n")
 
+  s.add_dependency 'rack'
   s.add_dependency 'json_api_client'
 end
