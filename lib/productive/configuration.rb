@@ -8,8 +8,8 @@ module Productive
     attr_accessor :paginator
 
     def initialize
-      self.api_key = ENV.fetch('PRODUCTIVE_API_KEY')
-      self.account_id = ENV.fetch('PRODUCTIVE_ACCOUNT_ID')
+      self.api_key = ENV['PRODUCTIVE_API_KEY']
+      self.account_id = ENV['PRODUCTIVE_ACCOUNT_ID']
       self.base_url = 'https://productive.io/api/v2/'
       self.paginator = JsonApiPaginator
     end
