@@ -25,7 +25,7 @@ which will generate ```config/initializers/productive.rb``` initializer, setting
 If you're using the gem in a standalone project, you need to configure the `API_KEY` and `ACCOUNT_ID` and setup the `Productive::Base` resource class:
 ```ruby
 Productive.configure do |config|
-  config.api_key = ENV['productive_api_key']
+  config.api_key = ENV.fetch('productive_api_key')
   config.account_id = ACCOUNT_ID
 end
 
