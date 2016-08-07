@@ -29,7 +29,7 @@ Productive.configure do |config|
   config.account_id = ACCOUNT_ID
 end
 
-Productive::Base.setup
+Productive::Base.setup(Productive.configuration)
 ```
 
 ## Usage
