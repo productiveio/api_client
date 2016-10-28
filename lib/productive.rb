@@ -13,6 +13,7 @@ require 'productive/resources/invoice'
 require 'productive/resources/person'
 require 'productive/resources/project'
 require 'productive/resources/service'
+require 'productive/resources/service_type'
 require 'productive/resources/time_entry'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
