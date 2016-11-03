@@ -28,10 +28,6 @@ module Productive
     def configure
       yield configuration
 
-      Productive::BaseAccount.subclasses.each do |sub|
-        sub.connection_object = nil
-      end
-
       Productive::Base.setup(@configuration)
       Productive::BaseAccount.setup(@configuration)
     end
