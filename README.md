@@ -22,14 +22,12 @@ rails generate productive API_KEY ACCOUNT_ID
 ```
 which will generate ```config/initializers/productive.rb``` initializer, setting up your `API_KEY` and `ACCOUNT ID`.
 
-If you're using the gem in a standalone project, you need to configure the `API_KEY` and `ACCOUNT_ID` and setup the `Productive::Base` resource class:
+If you're using the gem in a standalone project, you need to configure the `API_KEY` and `ACCOUNT_ID`:
 ```ruby
 Productive.configure do |config|
   config.api_key = ENV.fetch('productive_api_key')
   config.account_id = ACCOUNT_ID
 end
-
-Productive::Base.setup(Productive.configuration)
 ```
 
 ## Usage

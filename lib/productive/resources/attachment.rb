@@ -1,4 +1,4 @@
 module Productive
-  class Attachment < Base
+  class Attachment < BaseAccount
   end
 end

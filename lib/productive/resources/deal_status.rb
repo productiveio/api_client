@@ -1,4 +1,4 @@
 module Productive
-  class DealStatus < Base
+  class DealStatus < BaseAccount
   end
 end
