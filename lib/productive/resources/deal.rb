@@ -1,5 +1,5 @@
 module Productive
-  class Deal < Base
+  class Deal < BaseAccount
     has_one :deal_status
   end
 end

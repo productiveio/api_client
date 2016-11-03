@@ -1,4 +1,4 @@
 module Productive
-  class ServiceType < Base
+  class ServiceType < BaseAccount
   end
 end

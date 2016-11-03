@@ -1,4 +1,4 @@
 module Productive
-  class Client < Base
+  class Client < BaseAccount
   end
 end
