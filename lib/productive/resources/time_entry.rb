@@ -1,5 +1,5 @@
 module Productive
-  class TimeEntry < Base
+  class TimeEntry < BaseAccount
     has_one :service
   end
 end

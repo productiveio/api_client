@@ -1,4 +1,4 @@
 module Productive
-  class Person < Base
+  class Person < BaseAccount
   end
 end

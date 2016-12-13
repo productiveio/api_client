@@ -1,4 +1,4 @@
 module Productive
-  class Company < Base
+  class Company < BaseAccount
   end
 end
