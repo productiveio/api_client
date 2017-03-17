@@ -58,6 +58,7 @@ class JsonApiPaginator
   end
 
   private
+
   def params_for_uri(uri)
     return {} unless uri
     uri = Addressable::URI.parse(uri)
