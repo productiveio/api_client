@@ -10,7 +10,7 @@ module Productive
     def initialize
       self.api_key = ENV['PRODUCTIVE_API_KEY']
       self.account_id = ENV['PRODUCTIVE_ACCOUNT_ID']
-      self.base_url = 'https://productive.io/api/v2/'
+      self.base_url = 'https://api.productive.io/api/v2/'
       self.paginator = JsonApiPaginator
     end
   end
