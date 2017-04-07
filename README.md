@@ -51,15 +51,15 @@ Productive.configure do |config|
 end
 ```
 
-By default, this gem utilises the Productive API available at https://productive.io/api/v2/, but if you need to use a different endpoint, you can pass that as a configuration option:
+By default, this gem utilises the Productive API available at https://api.productive.io/api/v2/, but if you need to use a different endpoint, you can pass that as a configuration option:
 ```ruby
 Productive.configure do |config|
-  config.base_url = 'http://productive.dev/api/v2/'
+  config.base_url = 'http://api.productive.dev/api/v2/'
 end
 ```
 
 ## Credits
-Productive API client is maintained by [Productive](https://productive.io).and sponsored by [Infinum](https://infinum.co).
+Productive API client is maintained by [Productive](https://productive.io) and sponsored by [Infinum](https://infinum.co).
 
 ## License
 Copyright &copy; 2016 Productive, Infinum.
