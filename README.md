@@ -62,5 +62,5 @@ end
 Productive API client is maintained by [Productive](https://productive.io) and sponsored by [Infinum](https://infinum.co).
 
 ## License
-Copyright &copy; 2016 Productive, Infinum.
+Copyright &copy; 2017 Productive, Infinum.
 Productive API client is free software, and may be redistributed under the terms specified in the LICENSE file.
