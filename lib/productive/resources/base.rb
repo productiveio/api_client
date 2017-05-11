@@ -32,12 +32,12 @@ module Productive
 
     def self.depaginate(store, args)
       page = paginate(per_page: PER_PAGE).find(args)
-      store.add(page)
+      store.append(page)
 
       loop do
         page = page.pages.next
         raise StopIteration if page.nil?
-        store.add(page)
+        store.append(page)
       end
 
       store
@@ -50,13 +50,13 @@ module Productive
         @items = items
       end
 
-      def add(results)
+      def append(results)
         @items += results
       end
     end
 
     class LazyItems < BaseItems
-      def add(results)
+      def append(results)
         results.each { |item| @items << item }
       end
     end
