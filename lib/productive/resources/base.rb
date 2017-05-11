@@ -21,30 +21,44 @@ module Productive
     end
 
     def self.all(args = {})
-      arr = []
-      page = 1
-
-      loop do
-        results = paginate(per_page: PER_PAGE, page: page).find(args)
-        raise StopIteration if results.empty?
-        arr += results
-        page += 1
-      end
-
-      arr
+      depaginate(BaseItems.new([]), args).items
     end
 
-    def self.lazy_all
+    def self.lazy_all(args = {})
       Enumerator.new do |yielder|
-        page = 1
-
-        loop do
-          results = paginate(per_page: PER_PAGE, page: page).find(args)
-          raise StopIteration if results.empty?
-          results.each { |item| yielder << item }
-          page += 1
-        end
+        depaginate(LazyItems.new(yielder), args)
       end.lazy
+    end
+
+    def self.depaginate(items, args)
+      page = paginate(per_page: PER_PAGE).find(args)
+      items.append(page)
+
+      loop do
+        page = page.pages.next
+        raise StopIteration if page.nil?
+        items.append(page)
+      end
+
+      items
+    end
+
+    class BaseItems
+      attr_reader :items
+
+      def initialize(items)
+        @items = items
+      end
+
+      def append(results)
+        @items += results
+      end
+    end
+
+    class LazyItems < BaseItems
+      def append(results)
+        results.each { |item| @items << item }
+      end
     end
   end
 end
