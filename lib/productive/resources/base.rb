@@ -30,17 +30,17 @@ module Productive
       end.lazy
     end
 
-    def self.depaginate(store, args)
+    def self.depaginate(items, args)
       page = paginate(per_page: PER_PAGE).find(args)
-      store.append(page)
+      items.append(page)
 
       loop do
         page = page.pages.next
         raise StopIteration if page.nil?
-        store.append(page)
+        items.append(page)
       end
 
-      store
+      items
     end
 
     class BaseItems
