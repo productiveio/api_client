@@ -21,30 +21,36 @@ module Productive
     end
 
     def self.all(args = {})
-      arr = []
-      page = 1
-
-      loop do
-        results = paginate(per_page: PER_PAGE, page: page).find(args)
-        raise StopIteration if results.empty?
-        arr += results
-        page += 1
-      end
-
-      arr
+      depaginate([], args)
     end
 
-    def self.lazy_all
+    def self.lazy_all(args = {})
       Enumerator.new do |yielder|
-        page = 1
-
-        loop do
-          results = paginate(per_page: PER_PAGE, page: page).find(args)
-          raise StopIteration if results.empty?
-          results.each { |item| yielder << item }
-          page += 1
-        end
+        depaginate(yielder, args, true)
       end.lazy
+    end
+
+    def self.depaginate(store, args, lazy = false)
+      page = paginate(per_page: PER_PAGE).find(args)
+      store = add_to_store(store, page, lazy)
+
+      loop do
+        page = page.pages.next
+        raise StopIteration if page.nil?
+        store = add_to_store(store, page, lazy)
+      end
+
+      store
+    end
+
+    def self.add_to_store(store, result, lazy)
+      if lazy
+        result.each { |item| store << item }
+      else
+        store += result
+      end
+
+      store
     end
   end
 end
