@@ -1,5 +1,5 @@
 module Productive
   class LineItem < BaseAccount
-    has_one :new_invoice
+    has_one :invoice
   end
 end
