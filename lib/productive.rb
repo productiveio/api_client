@@ -1,4 +1,5 @@
 require 'json_api_client'
+require 'request_store'
 
 require 'productive/version'
 require 'productive/configuration'

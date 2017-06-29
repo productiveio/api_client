@@ -2,10 +2,35 @@ module Productive
   class Base < JsonApiClient::Resource
     PER_PAGE = 1000
 
+    def self.site
+      RequestStore.store[:json_api_client_base_site]
+    end
+
+    def self.site=(site)
+      RequestStore.store[:json_api_client_base_site] = site
+    end
+
+    def self.connection_options
+      RequestStore.store[:json_api_client_base_connection_options]
+    end
+
+    def self.connection_options=(options)
+      RequestStore.store[:json_api_client_base_connection_options] = options
+    end
+
+    def self.connection_object
+      RequestStore.store[:json_api_client_base_connection_object]
+    end
+
+    def self.connection_object=(connection)
+      RequestStore.store[:json_api_client_base_connection_object] = connection
+    end
+
     def self.setup(config)
       site_setup config
       connection_options_setup config
       paginator_setup config
+      reset_connection
     end
 
     def self.site_setup(config)
@@ -18,6 +43,10 @@ module Productive
 
     def self.paginator_setup(config)
       self.paginator = config.paginator
+    end
+
+    def self.reset_connection
+      self.connection(rebuild: true)
     end
 
     def self.all(args = {})
