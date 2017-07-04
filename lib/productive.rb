@@ -44,12 +44,12 @@ module Productive
     def configure
       yield configuration
 
-      Productive::Base.setup(@configuration)
-      Productive::BaseAccount.setup(@configuration)
+      Productive::Base.setup(configuration)
+      Productive::BaseAccount.setup(configuration)
     end
 
     def configuration
-      @configuration ||= Productive::Configuration.new
+      RequestStore.store[:json_api_client_configuration] ||= Productive::Configuration.new
     end
   end
 end
