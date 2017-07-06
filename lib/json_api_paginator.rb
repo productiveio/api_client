@@ -6,8 +6,8 @@ class JsonApiPaginator
   def initialize(result_set, data)
     @params = params_for_uri(result_set.uri)
     @result_set = result_set
-    @links = data['links']
-    @meta = data['meta']
+    @links = data['links'] || {}
+    @meta = data['meta'] || {}
   end
 
   def next
