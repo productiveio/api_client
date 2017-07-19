@@ -38,7 +38,13 @@ module Productive
     end
 
     def self.connection_options_setup(config)
-      self.connection_options = { headers: { 'X-Auth-Token' => config.api_key } }
+      if config.connection_options[:headers].nil?
+        config.connection_options[:headers] = { 'X-Auth-Token' => config.api_key }
+      else
+        config.connection_options[:headers]['X-Auth-Token'] = config.api_key
+      end
+
+      self.connection_options = config.connection_options
     end
 
     def self.paginator_setup(config)
@@ -46,7 +52,7 @@ module Productive
     end
 
     def self.reset_connection
-      self.connection(rebuild: true)
+      connection(rebuild: true)
     end
 
     def self.all(args = {})
