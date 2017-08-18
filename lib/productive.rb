@@ -37,6 +37,7 @@ require 'productive/resources/task'
 require 'productive/resources/task_list'
 require 'productive/resources/time_entry'
 require 'productive/resources/time_report'
+require 'productive/resources/todo'
 require 'productive/resources/user'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
