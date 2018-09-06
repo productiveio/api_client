@@ -30,6 +30,7 @@ module Productive
       site_setup config
       connection_options_setup config
       paginator_setup config
+      query_builder_setup config
       reset_connection
     end
 
@@ -51,49 +52,12 @@ module Productive
       self.paginator = config.paginator
     end
 
+    def self.query_builder_setup(config)
+      self.query_builder = config.query_builder
+    end
+
     def self.reset_connection
       connection(rebuild: true)
-    end
-
-    def self.all(args = {})
-      depaginate(BaseItems.new([]), args).items
-    end
-
-    def self.lazy_all(args = {})
-      Enumerator.new do |yielder|
-        depaginate(LazyItems.new(yielder), args)
-      end.lazy
-    end
-
-    def self.depaginate(items, args)
-      page = paginate(per_page: PER_PAGE).find(args)
-      items.append(page)
-
-      loop do
-        page = page.pages.next
-        raise StopIteration if page.nil?
-        items.append(page)
-      end
-
-      items
-    end
-
-    class BaseItems
-      attr_reader :items
-
-      def initialize(items)
-        @items = items
-      end
-
-      def append(results)
-        @items += results
-      end
-    end
-
-    class LazyItems < BaseItems
-      def append(results)
-        results.each { |item| @items << item }
-      end
     end
   end
 end
