@@ -1,5 +1,5 @@
 module Productive
-  class RealProfitabilityReport < BaseAccount
+  class ProfitabilityReport < BaseAccount
     has_one :deal
     has_one :company
     has_one :project
