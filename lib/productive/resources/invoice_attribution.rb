@@ -1,5 +1,5 @@
 module Productive
-  class OrganizationSubscription < BaseAccount
+  class InvoiceAttribution < BaseAccount
     has_one :invoice
     has_one :deal
   end
