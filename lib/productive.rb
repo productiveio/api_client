@@ -51,6 +51,7 @@ require 'productive/resources/time_entry'
 require 'productive/resources/time_report'
 require 'productive/resources/todo'
 require 'productive/resources/user'
+require 'productive/resources/deal_report'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
