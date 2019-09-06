@@ -1,8 +1,8 @@
 module Productive
   module Reports
-    class PersonReport < BaseAccount
+    class CompanyReport < BaseAccount
       def self.table_name
-        "reports/person_reports"
+        "reports/company_reports"
       end
     end
   end
