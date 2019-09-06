@@ -35,10 +35,7 @@ module Productive
     end
 
     def self.site_setup(config)
-      self.site = File.join config.base_url, self.namespace.to_s, '/'
-    end
-
-    def self.namespace
+      self.site = File.join config.base_url, '/'
     end
 
     def self.connection_options_setup(config)
