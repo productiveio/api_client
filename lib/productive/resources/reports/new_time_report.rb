@@ -1,6 +1,6 @@
 module Productive
   module Reports
-    class TimeReport < BaseAccount
+    class NewTimeReport < BaseAccount
       def self.table_name
         "reports/time_reports"
       end
