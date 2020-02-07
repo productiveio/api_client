@@ -1,12 +1,14 @@
 class JsonApiQueryBuilder < JsonApiClient::Query::Builder
   def all
     @all ||= begin
-      results = page = find
+      results = []
+      page_number = 1
 
       loop do
-        page = page.pages.next
-        break if page.nil?
+        page = page(page_number).find
+        break if page.blank?
         results += page
+        page_number += 1
       end
 
       results
