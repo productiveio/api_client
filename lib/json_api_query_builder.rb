@@ -2,13 +2,9 @@ class JsonApiQueryBuilder < JsonApiClient::Query::Builder
   def all
     @all ||= begin
       results = []
-      page_number = 1
 
-      loop do
-        page = page(page_number).find
-        break if page.blank?
-        results += page
-        page_number += 1
+      meta.total_pages.times do |page|
+        results += page(page + 1).find
       end
 
       results
