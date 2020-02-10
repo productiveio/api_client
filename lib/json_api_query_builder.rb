@@ -1,10 +1,16 @@
 class JsonApiQueryBuilder < JsonApiClient::Query::Builder
   def all
     @all ||= begin
-      results = []
+      results = page = find
+      next_page = 2
 
-      meta.total_pages.times do |page|
-        results += page(page + 1).find
+      loop do
+        break if page.links.links['next'].nil?
+
+        page = page(next_page).find
+        results += page
+
+        next_page += 1
       end
 
       results
