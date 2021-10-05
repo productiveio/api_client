@@ -79,6 +79,8 @@ require 'productive/resources/todo'
 require 'productive/resources/user'
 require 'productive/resources/workflow'
 require 'productive/resources/workflow_status'
+require 'productive/resources/timer'
+require 'productive/resources/discussion'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
