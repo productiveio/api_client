@@ -1,4 +1,4 @@
 module Productive
-  class Team < Base
+  class Team < BaseAccount
   end
 end
