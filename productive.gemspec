@@ -14,6 +14,6 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
 
   s.add_dependency 'rack'
-  s.add_dependency 'json_api_client', '~> 1.21'
+  s.add_dependency 'json_api_client', '>= 1.5.2'
   s.add_dependency 'request_store', '~> 1.3'
 end
