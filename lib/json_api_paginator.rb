@@ -1,6 +1,13 @@
 require 'rack'
 
 class JsonApiPaginator
+  class_attribute :page_param,
+                  :per_page_param
+
+
+  self.page_param = 'page'
+  self.per_page_param = 'per_page'
+
   attr_reader :params, :result_set, :links, :meta
 
   def initialize(result_set, data)
@@ -30,7 +37,9 @@ class JsonApiPaginator
     if links['last']
       uri = result_set.links.link_url_for('last')
       last_params = params_for_uri(uri)
-      last_params['page']['number'].to_i
+      last_params.fetch(page_param) do
+        current_page
+      end.to_i
     else
       current_page
     end
@@ -39,14 +48,24 @@ class JsonApiPaginator
   def total_entries
     meta['total_count'].to_i || per_page * total_pages
   end
-  alias_method :total_count, :total_entries
+  def total_count; total_entries; end
+
+  def offset
+    per_page * (current_page - 1)
+  end
 
   def per_page
-    params['page']['size'].to_i
+    params.fetch(per_page_param) do
+      result_set.length
+    end.to_i
   end
 
   def current_page
-    (params['page']['number'] || 1).to_i
+    params.fetch(page_param, 1).to_i
+  end
+
+  def out_of_bounds?
+    current_page > total_pages
   end
 
   def previous_page
@@ -57,11 +76,11 @@ class JsonApiPaginator
     current_page < total_pages ? (current_page + 1) : nil
   end
 
-  private
+  protected
 
   def params_for_uri(uri)
     return {} unless uri
     uri = Addressable::URI.parse(uri)
-    Rack::Utils.parse_nested_query(uri.query || '')
+    (uri.query_values || {}).with_indifferent_access
   end
 end
