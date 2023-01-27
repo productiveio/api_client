@@ -1,3 +1,3 @@
 module Productive
-  VERSION = '0.6.63'.freeze
+  VERSION = '0.6.64'.freeze
 end
