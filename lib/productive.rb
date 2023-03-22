@@ -105,6 +105,7 @@ require 'productive/resources/workflow'
 require 'productive/resources/workflow_status'
 require 'productive/resources/timer'
 require 'productive/resources/discussion'
+require 'productive/resources/purchase_order'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
