@@ -40,6 +40,12 @@ Productive::Project.all
 Productive::Project.paginate(per_page: 50).page(5).find
 
 Productive::Project.where(client_id: 1).all
+Productive::Project.where(
+  created_at: {
+    lt_eq: '2025-04-30',
+    gt_eq: '2025-03-31'
+  }
+).paginate(page: 1, per_page: 200).all
 ```
 
 ## Customizing
