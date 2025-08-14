@@ -122,6 +122,7 @@ require 'productive/resources/discussion'
 require 'productive/resources/purchase_order'
 require 'productive/resources/bill'
 require 'productive/resources/bill_item'
+require 'productive/resources/bank_account'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
