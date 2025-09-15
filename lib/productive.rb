@@ -123,6 +123,7 @@ require 'productive/resources/purchase_order'
 require 'productive/resources/bill'
 require 'productive/resources/bill_item'
 require 'productive/resources/bank_account'
+require 'productive/resources/invoice_template'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
