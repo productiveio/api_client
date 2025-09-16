@@ -124,6 +124,7 @@ require 'productive/resources/bill'
 require 'productive/resources/bill_item'
 require 'productive/resources/bank_account'
 require 'productive/resources/invoice_template'
+require 'productive/resources/automatic_invoicing_rule'
 
 require 'productive/railtie' if defined?(Rails::Railtie)
 
